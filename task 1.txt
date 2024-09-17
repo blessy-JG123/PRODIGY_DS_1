@@ -1,0 +1,29 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data_path = r"C:\Users\bless\Downloads\API_SP.POP.TOTL_DS2_en_csv_v2_3401680\Metadata_Country_API_SP.POP.TOTL_DS2_en_csv_v2_3401680.csv"
+df = pd.read_csv(data_path, skiprows=4)
+
+
+print("First 5 rows of the DataFrame (Her̥r̥ad):")
+print(df.head())
+
+
+print("\nLast 5 rows of the DataFrame (Tail):")
+print(df.tail())
+
+if 'Africa Western and Central' in df.columns:
+    category_counts = df['Africa Western and Central'].value_counts()
+
+    plt.figure(figsize=(10, 6))
+    plt.bar(category_counts.index, category_counts.values, color='skyblue', edgecolor='black')
+    plt.title('Distribution of Africa Western and Central')
+    plt.xlabel('Category')
+    plt.ylabel('Count')
+    plt.xticks(rotation=45)  
+    plt.show()
+else:
+    print("Column 'Africa Western and Central' not found in the dataset.")
+
+
+
